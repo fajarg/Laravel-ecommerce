@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front_page;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderItem;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\Product;
@@ -45,6 +46,16 @@ class CartController extends Controller
             ]
         );
 
+        // update stock in product
+        $product_id = $request->product_id;
+
+        $product = Product::find($product_id);
+        $stock = $product->stock;
+        $sisa_stock = $stock - $qty;
+
+        $product->stock = $sisa_stock;
+        $product->save();
+
         $data['order_items'] = DB::table('order_items')
             ->select('products.nama', 'order_items.qty', 'products.harga', 'products.image')
             ->join('products', 'order_items.product_id', '=', 'products.id')
@@ -84,6 +95,18 @@ class CartController extends Controller
 
     public function delete($id)
     {
+        //add back stock to product list
+        $order_item = OrderItem::find($id);
+
+        $qty = $order_item->qty;
+        $product_id = $order_item->product_id;
+
+        $product = Product::find($product_id);
+        $stock = $product->stock;
+        $jumlah_stock = $stock + $qty;
+        $product->stock = $jumlah_stock;
+        $product->save();
+
         DB::table('order_items')->where('id', $id)->delete();
 
         return back()->with('status', 'Data was deleted!');

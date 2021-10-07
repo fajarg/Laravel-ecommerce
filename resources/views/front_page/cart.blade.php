@@ -74,7 +74,7 @@
                     <input type="text" placeholder="Enter promo code">
                     <button>Submit</button>
                 </form>
-                <a href="/checkout" class="site-btn">Proceed to checkout</a>
+                <a href="/checkout/{{Auth::user()->id}}" class="site-btn">Proceed to checkout</a>
                 <a href="/product" class="site-btn sb-dark">Continue shopping</a>
             </div>
         </div>

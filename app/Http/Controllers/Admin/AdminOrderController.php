@@ -33,7 +33,7 @@ class AdminOrderController extends Controller
     public function InsertAction(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|integer|exists:users,id',
+            'user_id' => 'required|integer|exists:users,id|unique:users,id',
             'date_order' => 'required',
         ]);
 

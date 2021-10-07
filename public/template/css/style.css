@@ -1945,15 +1945,11 @@ ol {
     font-weight: 700;
     color: #fff;
     line-height: 1;
-    border-radius: 50px;
+    border-radius: 5px;
     background: #3b3b3b;
     padding: 21px 29px 20px;
-    margin-bottom: 66px;
-}
-
-.checkout-form p {
-    font-size: 16px;
-    color: #414141;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .checkout-form h4 {
@@ -1961,7 +1957,7 @@ ol {
     color: #414141;
 }
 
-.checkout-form input[type=text] {
+/* .checkout-form input[type=text] {
     width: 100%;
     height: 44px;
     border: none;
@@ -1970,7 +1966,8 @@ ol {
     border-radius: 40px;
     margin-bottom: 20px;
     font-size: 14px;
-}
+} */
+
 
 .checkout-form .address-inputs {
     margin-bottom: 54px;
@@ -2069,7 +2066,7 @@ ol {
 .checkout-cart {
     background: #f0f0f0;
     padding: 40px 24px 30px;
-    border-radius: 25px;
+    border-radius: 5px;
 }
 
 .checkout-cart h3 {
@@ -2095,6 +2092,7 @@ ol {
 
 .checkout-cart .product-list .pl-thumb img {
     min-width: 100%;
+    object-fit: cover;
 }
 
 .checkout-cart .product-list h6 {
@@ -2125,7 +2123,7 @@ ol {
 
 .checkout-cart .price-list li span {
     float: right;
-    width: 60px;
+    width: 130px;
     text-align: left;
 }
 

@@ -48,9 +48,22 @@ class OrderItemController extends Controller
         $data = $request->all();
 
         OrderItem::create($data);
+
+        // update stock in product
+        $product_id = $request->product_id;
+        $qty = $request->qty;
+
+        $product = Product::find($product_id);
+        $stock = $product->stock;
+        $sisa_stock = $stock - $qty;
+
+        $product->stock = $sisa_stock;
+        $product->save();
+
+
         $orderitem = OrderItem::with('product')->where('order_id', $data['order_id'])->get();
 
-        return response()->json(['message' => 'Success add order item to : ' . $name  . ' and order_id : ' . $order_id, 'data' => $orderitem]);
+        return response()->json(['message' => 'Success add order item to : ' . $name  . ' and order_id : ' . $order_id, 'data' => $orderitem, 'produk' => $product, 'sisa_stock' => $sisa_stock]);
     }
 
     /**
@@ -110,6 +123,18 @@ class OrderItemController extends Controller
      */
     public function destroy($name, $order_id, $id)
     {
+        //add back stock to product list
+        $order_item = OrderItem::find($id);
+
+        $qty = $order_item->qty;
+        $product_id = $order_item->product_id;
+
+        $product = Product::find($product_id);
+        $stock = $product->stock;
+        $jumlah_stock = $stock + $qty;
+        $product->stock = $jumlah_stock;
+        $product->save();
+
         OrderItem::where('order_id', $order_id)->where('id', $id)->delete();
         $orderitem = OrderItem::with('product')->where('order_id', $order_id)->get();
 

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="description" content=" Divisima | eCommerce Template">
     <meta name="keywords" content="divisima, eCommerce, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link href="{{asset('template')}}/img/favicon.ico" rel="shortcut icon" />
 
@@ -132,7 +132,11 @@
                             @else
                             <li><a href="/login">Cart Page</a></li>
                             @endif
-                            <li><a href="/checkout">Checkout Page</a></li>
+                            @if(Auth::check())
+                            <li><a href="/checkout/{{Auth::user()->id}}">Checkout Page</a></li>
+                            @else
+                            <li><a href="/login">Checkout Page</a></li>
+                            @endif
                             <li><a href="/contact">Contact Page</a></li>
                         </ul>
                     </li>

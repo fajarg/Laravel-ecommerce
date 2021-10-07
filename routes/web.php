@@ -9,6 +9,7 @@ use App\Http\Controllers\Front_page\HomeController;
 use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Front_page\ContactController;
+use App\Http\Controllers\Front_page\PaymentController;
 use App\Http\Controllers\Front_page\ProductController;
 use App\Http\Controllers\Front_page\CheckoutController;
 use App\Http\Controllers\Admin\AdminOrderItemController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\Front_page\DetailProductController;
 |
 */
 
+//user page
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/product', [ProductController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
@@ -33,9 +35,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/detail_product/{id}', [DetailProductController::class, 'index']);
     Route::get('/cart/{id}', [CartController::class, 'index']);
     Route::post('/cart', [CartController::class, 'add']);
-    Route::get('/checkout', [CheckoutController::class, 'index']);
+    Route::get('/checkout/{id}', [CheckoutController::class, 'index']);
+    Route::get('/province', [CheckoutController::class, 'get_province']);
+    Route::get('/city/{id}', [CheckoutController::class, 'get_city']);
+    Route::get('/origin={city_origin}&destination={city_destination}&weight={weight}&courier={courier}', [CheckoutController::class, 'get_ongkir']);
     Route::get('/delete/{order_item_id}', [CartController::class, 'delete']);
+    Route::post('/payment', [PaymentController::class, 'index']);
 });
+
+
+
+
+// admin page
 Auth::routes(['middleware' => 'is_admin']);
 Route::get('/admin/', [AdminHomeController::class, 'index']);
 

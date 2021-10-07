@@ -42,13 +42,14 @@
                     <label for="product_id">Select Product</label>
                     <select class="form-control" id="product_id" name="product_id">
                         @foreach ($products as $row)
-                        <option value="{{$row->id}}" class="{{$row->stock}}">{{$row->nama}} (Stock : <span value="{{$row->stock}}">{{$row->stock}})</span></option>
+                        <option value="{{$row->id}}" class="{{$row->stock}}">{{$row->nama}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="qty">QTY</label>
                     <input type="number" min="1" class="form-control" name="qty" id="qty" required>
+                    <div id="emailHelp" class="form-text">Stock available : <span id="stock"></span></div>
                 </div>
         </div>
         <div class="card-footer">
@@ -125,6 +126,19 @@
                     $('#data-item').html(updateTable(result.data))
                     $('#qty').val('')
                     alert('Success insert data')
+                    const sisa_stock = result.sisa_stock;
+                    $('#stock').text(sisa_stock);
+
+                    if (sisa_stock === 0) {
+                        $('#qty').attr("max", sisa_stock);
+                        $('#qty').attr("min", sisa_stock);
+                        $('#qty').prop("disabled", true);
+                        $('#qty').val('');
+                    } else {
+                        $('#qty').attr("max", sisa_stock);
+                        $('#qty').attr("min", 1);
+                        $('#qty').prop("disabled", false);
+                    }
                 }
             })
         })
@@ -220,6 +234,7 @@
                 dataType: 'json',
                 success: function(response) {
                     const max = response.stock;
+                    $('#stock').text(max);
                     if (max === 0) {
                         $('#qty').attr("max", max);
                         $('#qty').attr("min", max);

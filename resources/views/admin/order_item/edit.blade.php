@@ -49,6 +49,8 @@
                 <div class="form-group">
                     <label for="qty">QTY</label>
                     <input type="number" min="1" class="form-control" name="qty" id="qty" value="{{old('qty', $order_items->qty)}}" required>
+                    <div id="emailHelp" class="form-text">Stock available : <span id="stock">{{$order_items->stock}}</span></div>
+                    <input type="hidden" value="{{$order_items->stock}}" id="stock-available">
                 </div>
         </div>
         <div class="card-footer">
@@ -62,3 +64,24 @@
 <br><br>
 </div>
 @endsection
+
+@push('script')
+<script>
+    $(document).ready(function() {
+        const max = $('#stock-available').val();
+
+        $('#stock-available').text(max);
+
+        if (max === 0) {
+            $('#qty').attr("max", max);
+            $('#qty').attr("min", max);
+            $('#qty').prop("disabled", true);
+            $('#qty').val('');
+        } else {
+            $('#qty').attr("max", max);
+            $('#qty').attr("min", 1);
+            $('#qty').prop("disabled", false);
+        }
+    })
+</script>
+@endpush

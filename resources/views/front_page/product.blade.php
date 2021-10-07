@@ -49,8 +49,8 @@
                                     <img src="{{asset('template/img/product/')}}/{{$item->image}}" alt="">
                                 </a>
                                 <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                    <a href="{{url('/detail_product/'.$item->id)}}" class="add-card"><i class="flaticon-bag"></i><span>SHOP NOW</span></a>
+                                    <a href="{{url('/detail_product/'.$item->id)}}" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                                 </div>
                             </div>
                             <div class="pi-text">

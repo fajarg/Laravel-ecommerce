@@ -104,6 +104,7 @@
 
 
 	<!--====== Javascripts & Jquery ======-->
+	<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-zAJfV0fgSpMmL4A3"></script>
 	<script src="{{asset('template')}}/js/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="{{asset('template')}}/js/bootstrap.min.js"></script>
@@ -113,7 +114,7 @@
 	<script src="{{asset('template')}}/js/jquery.zoom.min.js"></script>
 	<script src="{{asset('template')}}/js/jquery-ui.min.js"></script>
 	<script src="{{asset('template')}}/js/main.js"></script>
-
+	@stack('script')
 	</body>
 
 	</html>

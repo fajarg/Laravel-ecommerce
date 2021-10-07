@@ -11,8 +11,8 @@
                         <span>New Arrivals</span>
                         <h2>denim jackets</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-                        <a href="#" class="site-btn sb-line">DISCOVER</a>
-                        <a href="#" class="site-btn sb-white">ADD TO CART</a>
+                        <a href="/product" class="site-btn sb-line">SEE OTHER</a>
+                        <a href="{{url('/detail_product/1')}}" class="site-btn sb-white">SHOP NOW</a>
                     </div>
                 </div>
                 <div class="offer-card text-white">
@@ -29,8 +29,8 @@
                         <span>New Arrivals</span>
                         <h2>denim jackets</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-                        <a href="#" class="site-btn sb-line">DISCOVER</a>
-                        <a href="#" class="site-btn sb-white">ADD TO CART</a>
+                        <a href="/product" class="site-btn sb-line">SEE OTHER</a>
+                        <a href="{{url('/detail_product/2')}}" class="site-btn sb-white">SHOP NOW</a>
                     </div>
                 </div>
                 <div class="offer-card text-white">
@@ -136,8 +136,8 @@
                             <img src="{{asset('template/img/product/')}}/{{$item->image}}" alt="">
                         </a>
                         <div class="pi-links">
-                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                            <a href="{{url('/detail_product/'.$item->id)}}" class="add-card"><i class="flaticon-bag"></i><span>SHOP NOW</span></a>
+                            <a href="{{url('/detail_product/'.$item->id)}}" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                         </div>
                     </div>
                     <div class="pi-text">
@@ -165,7 +165,7 @@
             <div class="tag-new">NEW</div>
             <span>New Arrivals</span>
             <h2>STRIPED SHIRTS</h2>
-            <a href="#" class="site-btn">SHOP NOW</a>
+            <a href="{{url('/detail_product/25')}}" class="site-btn">SHOP NOW</a>
         </div>
     </div>
 </section>
