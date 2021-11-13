@@ -9,7 +9,7 @@
 
 @section('content')
 
-<!-- Main content -->
+<!-- Main Content -->
 <section class="content">
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
